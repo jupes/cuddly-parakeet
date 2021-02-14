@@ -33,9 +33,7 @@ const Game = () => {
     return (
       <>
         {boardHistory.map((_step, move) => {
-          console.log('In the map');
           const destination = move ? `Go to move#${move}` : 'Go to start';
-          console.log(destination);
           return (
             <button className='startbtn' onClick={() => jumpTo(move)}>
               {destination}
