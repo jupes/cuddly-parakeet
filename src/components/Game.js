@@ -8,8 +8,16 @@ const Game = () => {
   const [xToPlay, setXToPlay] = useState(true);
   const winStateAcheived = calculateWinner(board);
 
-  const handleClick = () => {
-      
+  const handleClick = (i) => {
+    const prevBoardState = [...board];
+    const newBoardState = [...board];
+
+    // if click used or game is over
+    if (winStateAcheived || prevBoardState[i]) return;
+    // Place X or O on clicked square
+    newBoardState[i] = xToPlay ? 'X' : 'O';
+    setBoard(newBoardState);
+    setXToPlay(!xToPlay);
   };
 
   const jumpTo = () => {};
