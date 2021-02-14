@@ -1,21 +1,13 @@
 import React from 'react';
 import Square from './Square';
 
-const Board = ({ squares, onClick }) => {
-  const onClickHandler = () => {};
+const Board = ({ squares, onClickHandler }) => {
   return (
     <>
       <div className='board'>
-        <Square value='1' onClickHandler={() => onClickHandler("test")} />
-        <Square value='1' onClickHandler={() => onClickHandler("test")} />
-        <Square value='1' onClickHandler={() => onClickHandler("test")} />
-        <Square value='1' onClickHandler={() => onClickHandler("test")} />
-        <Square value='1' onClickHandler={() => onClickHandler("test")} />
-        <Square value='1' onClickHandler={() => onClickHandler("test")} />
-        <Square value='1' onClickHandler={() => onClickHandler("test")} />
-        <Square value='1' onClickHandler={() => onClickHandler("test")} />
-        <Square value='1' onClickHandler={() => onClickHandler("test")} />
-
+        {squares.map((square, i) => {
+          return <Square key={i} value={square} onClick={() => onClickHandler(i)} />;
+        })}
       </div>
     </>
   );

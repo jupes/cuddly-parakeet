@@ -27,7 +27,3 @@ export function calculateWinner(squares) {
   // no win condition found
   return null;
 }
-
-const squares = [null, null, null, 'X', 'X', 'X', null, null, null];
-
-console.log(calculateWinner(squares));
