@@ -4,35 +4,61 @@ import Board from './Board';
 
 const Game = () => {
   // create board with initial state of 9 spaces, all null
-  const [board, setBoard] = useState(Array(9).fill(null));
+  const [boardHistory, setBoardHistory] = useState([Array(9).fill(null)]);
+  const [recordNumber, setRecordNumber] = useState(0);
   const [xToPlay, setXToPlay] = useState(true);
-  const winStateAcheived = calculateWinner(board);
+  const winStateAcheived = calculateWinner(boardHistory[recordNumber]);
 
   const handleClick = (i) => {
-    const prevBoardState = [...board];
-    const newBoardState = [...board];
+    const prevBoardState = boardHistory.slice(0, recordNumber + 1);
+    const newBoardState = prevBoardState[recordNumber];
+    const squaresState = [...newBoardState];
 
     // if click used or game is over
-    if (winStateAcheived || prevBoardState[i]) return;
+    if (winStateAcheived || squaresState[i]) return;
     // Place X or O on clicked square
-    newBoardState[i] = xToPlay ? 'X' : 'O';
-    setBoard(newBoardState);
+    squaresState[i] = xToPlay ? 'X' : 'O';
+
+    setBoardHistory([...prevBoardState, squaresState]);
+    setRecordNumber(prevBoardState.length);
     setXToPlay(!xToPlay);
   };
 
-  const jumpTo = () => {};
+  const jumpTo = (moveNumber) => {
+    setRecordNumber(moveNumber);
+    setXToPlay(moveNumber % 2 === 0);
+  };
 
-  const renderMoves = () => {};
+  const renderMoves = () => {
+    return (
+      <>
+        {boardHistory.map((_step, move) => {
+          console.log('In the map');
+          const destination = move ? `Go to move#${move}` : 'Go to start';
+          console.log(destination);
+          return (
+            <button className='startbtn' onClick={() => jumpTo(move)}>
+              {destination}
+            </button>
+          );
+        })}
+      </>
+    );
+  };
 
   return (
     <>
-      <Board squares={board} onClickHandler={handleClick} />
+      <Board
+        squares={boardHistory[recordNumber]}
+        onClickHandler={handleClick}
+      />
       <div>
         <p>
           {winStateAcheived
             ? 'Winner Winner Chicken Dinner: ' + winStateAcheived
             : 'Next To Play: ' + (xToPlay ? 'X' : 'O')}
         </p>
+        {renderMoves()}
       </div>
     </>
   );

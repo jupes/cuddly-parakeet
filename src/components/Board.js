@@ -6,7 +6,7 @@ const Board = ({ squares, onClickHandler }) => {
     <>
       <div className='board'>
         {squares.map((square, i) => {
-          return <Square key={i} value={square} onClick={() => onClickHandler(i)} />;
+          return <Square key={i} value={square} onClickHandler={() => onClickHandler(i)} />;
         })}
       </div>
     </>
