@@ -32,12 +32,14 @@ const Game = () => {
   const renderMoves = () => {
     return (
       <>
-        {boardHistory.map((_step, move) => {
-          const destination = move ? `Go to move#${move}` : 'Go to start';
+        {boardHistory.map((_step, moveNumber) => {
+          const destination = moveNumber ? `Go to move #${moveNumber}` : 'Go to start';
           return (
-            <button className='startbtn' onClick={() => jumpTo(move)}>
-              {destination}
-            </button>
+            <li key={moveNumber}>
+              <button className='startbtn' onClick={() => jumpTo(moveNumber)}>
+                {destination}
+              </button>
+            </li>
           );
         })}
       </>
@@ -56,7 +58,7 @@ const Game = () => {
             ? 'Winner Winner Chicken Dinner: ' + winStateAcheived
             : 'Next To Play: ' + (xToPlay ? 'X' : 'O')}
         </p>
-        {renderMoves()}
+        <ul>{renderMoves()}</ul>
       </div>
     </>
   );
