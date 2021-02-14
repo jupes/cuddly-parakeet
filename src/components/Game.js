@@ -26,8 +26,13 @@ const Game = () => {
 
   return (
     <>
+      <Board squares={board} onClickHandler={handleClick} />
       <div>
-        <Board squares={board} onClickHandler={handleClick} />
+        <p>
+          {winStateAcheived
+            ? 'Winner Winner Chicken Dinner: ' + winStateAcheived
+            : 'Next To Play: ' + (xToPlay ? 'X' : 'O')}
+        </p>
       </div>
     </>
   );
