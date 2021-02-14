@@ -83,3 +83,9 @@ h1 {
   color: black;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
+
+p {
+  margin-bottom: 1.25rem;
+  color: gray;
+  margin: 2rem;
+}
