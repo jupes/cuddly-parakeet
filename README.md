@@ -1,3 +1,6 @@
+# Want to see how the app works without cloning?
+https://suspicious-lumiere-03d57a.netlify.app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
