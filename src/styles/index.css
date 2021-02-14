@@ -88,4 +88,30 @@ p {
   margin-bottom: 1.25rem;
   color: gray;
   margin: 2rem;
+  font-size: xx-large;
+}
+
+.startbtn {
+  display: inline-block;
+  background: green;
+  color: white;
+  padding: 1rem 1rem;
+  border-radius: var(--radius);
+  border-color: transparent;
+  text-transform: capitalize;
+  font-size: 2rem;
+  letter-spacing: var(--spacing);
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  outline: 'none';
+  font-weight: 300;
+}
+
+.startbtn:hover {
+  background: rgb(234, 255, 235);
+  color: darkcyan;
 }
